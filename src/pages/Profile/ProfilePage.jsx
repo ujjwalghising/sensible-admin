@@ -25,7 +25,7 @@ export default function ProfilePage() {
     e.preventDefault();
 
     try {
-      const res = await api.put("/admin/profile", formData);
+      const res = await api.put("/api/admin/profile", formData);
       setAdmin((prev) => ({ ...prev, name: res.data.name }));
       toast.success("Profile updated");
     } catch (err) {

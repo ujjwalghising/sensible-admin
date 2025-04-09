@@ -27,8 +27,9 @@ export const logoutAdmin = () => {
 };
 
 // ✅ Get all orders
-export const getAllOrders = () => {
-  return api.get("/orders");
+export const getAllOrders = async () => {
+  const res = await axios.get("/orders");
+  return res.data.orders; // ✅ Make sure this is returning an array
 };
 
 // ✅ Update order status
@@ -47,9 +48,11 @@ export const getDashboardStats = () => {
 };
 
 // ✅ Get all users
-export const getAllUsers = () => {
-  return api.get("/users");
+export const getAllUsers = async () => {
+  const res = await axios.get("/users");
+  return res.data.users; // ✅ not just res.data
 };
+
 
 // ✅ Delete user
 export const deleteUserById = (id) => {

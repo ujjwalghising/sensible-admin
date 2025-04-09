@@ -9,7 +9,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const res = await axios.get("/admin/dashboard");
+        const res = await axios.get("/api/admin/dashboard");
         setStats(res.data);
       } catch (err) {
         setError("Failed to load dashboard data");

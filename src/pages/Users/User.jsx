@@ -1,3 +1,4 @@
+// pages/admin/Users.jsx
 import { useEffect, useState } from "react";
 import { getAllUsers, deleteUserById, updateUserById } from "@/services/userService";
 import { useAuth } from "@/context/AuthContext";
@@ -13,7 +14,7 @@ export default function Users() {
   const fetchUsers = async () => {
     try {
       const res = await getAllUsers();
-      setUsers(res.data);
+      setUsers(res.data.users || []); // ✅ fixed
     } catch (err) {
       console.error("Error fetching users:", err);
     } finally {
@@ -22,8 +23,7 @@ export default function Users() {
   };
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this user?");
-    if (!confirmDelete) return;
+    if (!window.confirm("Are you sure you want to delete this user?")) return;
 
     try {
       await deleteUserById(id);
@@ -42,7 +42,9 @@ export default function Users() {
     try {
       const res = await updateUserById(id, updatedData);
       setUsers((prev) =>
-        prev.map((user) => (user._id === id ? { ...user, ...res.data } : user))
+        prev.map((user) =>
+          user._id === id ? { ...user, ...res.data.user } : user // ✅ fixed
+        )
       );
       setIsEditOpen(false);
     } catch (error) {

@@ -8,7 +8,7 @@ export default function Users() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("/admin/users");
+      const res = await axios.get("/api/admin/users");
       console.log("Fetched users:", res.data); // Debug: check API shape
       setUsers(res.data.users || []); // Safely get array of users
     } catch (err) {
@@ -21,7 +21,7 @@ export default function Users() {
   const deleteUser = async (id) => {
     if (!confirm("Are you sure you want to delete this user?")) return;
     try {
-      await axios.delete(`/admin/users/${id}`);
+      await axios.delete(`/api/admin/users/${id}`);
       toast.success("User deleted");
       setUsers((prevUsers) => prevUsers.filter((u) => u._id !== id));
     } catch (err) {
