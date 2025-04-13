@@ -17,8 +17,9 @@ export const loginAdmin = (data) => {
 };
 
 // ✅ Get current logged-in admin
-export const getCurrentAdmin = () => {
-  return api.get("/me");
+export const getCurrentAdmin = async () => {
+  const res = await axios.get("/me");
+  return res.data;
 };
 
 // ✅ Logout admin

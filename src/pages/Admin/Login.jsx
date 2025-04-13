@@ -30,6 +30,7 @@ export default function Login() {
       <form
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm"
+        autoComplete="off"
       >
         <h2 className="text-2xl font-bold mb-4 text-center">Admin Login</h2>
 
@@ -45,6 +46,7 @@ export default function Login() {
         <input
           type="password"
           placeholder="Password"
+          autoCorrect="new-password"
           className="w-full mb-4 px-4 py-2 border rounded focus:outline-none"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

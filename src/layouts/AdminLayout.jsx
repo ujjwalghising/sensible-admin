@@ -8,6 +8,7 @@ import {
   User,
   LogOut,
   Receipt,
+  Box,
 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
@@ -18,11 +19,13 @@ export default function AdminLayout() {
     { to: "/", label: "Dashboard", icon: LayoutDashboard },
     { to: "/users", label: "Users", icon: Users },
     { to: "/orders", label: "Orders", icon: FileText },
-    { to: "/invoices", label: "Invoices", icon: Receipt }, // 🧾 Added Invoices!
+    { to: "/invoices", label: "Invoices", icon: Receipt },
+    { to: "/products", label: "Products", icon: Box }, // 🆕 Add this line
     { to: "/analytics", label: "Analytics", icon: BarChart },
     { to: "/settings", label: "Settings", icon: Settings },
     { to: "/profile", label: "Profile", icon: User },
   ];
+  
 
   return (
     <div className="flex h-screen">

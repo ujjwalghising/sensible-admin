@@ -34,7 +34,7 @@ export default function SettingsPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     api
-      .put("/admin/settings", settings)
+      .put("/api/admin/settings", settings)
       .then((res) => {
         toast.success("Settings updated!");
       })
